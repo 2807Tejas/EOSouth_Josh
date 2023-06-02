@@ -1,0 +1,73 @@
+Assignment No.4 
+
+/// <reference types="cypress"/>
+describe('Assertion ', () => {
+
+    it('Implicit assertion', () => {
+
+        cy.visit("https://staging-app.eosaregion.com/")
+        
+          cy.wait(5000)
+          cy.url().should('include','eosaregion.com/')
+          cy.url().should('eq','https://staging-app.eosaregion.com/')
+          cy.url().should('contain','eosaregion.com/')
+
+           cy.url().should('include','eosaregion.com/')
+          .should('eq','https://staging-app.eosaregion.com/')
+          .should('contain','eosaregion.com/')
+
+
+           cy.url().should('include','eosaregion.com/')
+          .and('eq','https://staging-app.eosaregion.com/')
+          .and ('contain','eosaregion.com/')
+          //.and('not.contain','eosaregion.com/')
+        
+        
+          cy.title().should('include','EO South Asia')                       // page title 
+          
+          cy.wait(5000)
+          //cy.get(".authentication-wrapper.shadow-sm.scroll-y.h-100").should('be.visible') // logo visible or not
+          //cy.get(".authentication-wrapper.shadow-sm.scroll-y.h-100").should('exist')     // logo exist or not
+          //.and('exist')
+
+          cy.xpath("//a").should("have.length",'12')             // identify link
+
+
+
+    });
+         
+    
+});
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Fixture File: 4.2
+
+describe("Fixture test data",function(){
+ 
+      it("OrangeHRM", function(){
+
+     cy.visit("https://opensource-demo.orangehrmlive.com/")
+
+     cy.fixture('OrangeHRM.json').then((data)=>{ 
+                 
+     cy.get("[name='username']").type(data.Username)
+     cy.get("[type='password']").type(data.Password)
+     cy.get("[type='submit']").click()
+    
+  })
+
+})
+})
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Assignment 4.3 
+Drag and drop :
+
+describe('Assignment 4.3',()=>{
+    it('Drag and Drop',function(){
+    cy.visit('https://demoqa.com/droppable')
+    cy.get('#draggable').drag('#simpleDropContainer > #droppable',{force:true})
+})
+})\
